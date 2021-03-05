@@ -1,7 +1,7 @@
 import brain from 'brain.js';
-import trainingData from '../JSON/trainingData.v0.json';
+import trainingData from '../JSON/training/data.v0.json';
 import {saveTrainedData} from '../helper/saveTrainedData';
-import pretrainedData from '../JSON/pretrainedData.v0.json';
+import pretrainedData from '../JSON/pretrained/data.v0.json';
 
 export const network = new brain.NeuralNetwork();
 
@@ -16,10 +16,19 @@ if(USE_PRETRAINED_DATA){
 
 const mapScreen = document.getElementById('display-map')!;
 //@ts-ignore
-mapScreen.innerHTML = brain.utilities.toSVG(network);
+mapScreen.innerHTML = brain.utilities.toSVG(network,{
+    height: 400,
+    width: 700
+});
 
 
 function trainAndSave() {
-    network.train(trainingData.numbers);
-    saveTrainedData(network.toJSON());
+    console.log('Training started...');
+
+    network.trainAsync(trainingData.numbers).then((res) => {
+        console.log('Training finished', res);
+        saveTrainedData(network.toJSON());
+    }).catch((e)=> {
+        console.log('Error', e);
+    })
 }
