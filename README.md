@@ -4,4 +4,10 @@ The goal is to train with digit recognition only in the middle of the grid and t
 
 ## Progress
 
-Currently I am a bad trainer, since my brains are not able to recognize digits at all...
+Currently I am a bad trainer, since my brains are not able to recognize digits at all...  
+
+[DEMO link](https://stilwellbrain.000webhostapp.com/brain.js/)
+
+### Helpers
+
+[webpack5](ttps://www.npmjs.com/package/snowpack-plugin-webpack5)  
