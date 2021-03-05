@@ -1,5 +1,5 @@
 
-import { PIXEL_STEP, TOTAL_PIXELS } from "./index";
+import { PIXEL_STEP, TOTAL_PIXELS } from "../index";
 import Pixel from "./pixel";
 
 export function initPixels(pixels:Pixel[]) {

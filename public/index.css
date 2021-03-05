@@ -1,6 +1,7 @@
 canvas {
     display: block;
     border: 1px solid brown;
+    cursor: pointer;
 }
 
 input.get {
@@ -44,4 +45,10 @@ div.control-panel {
 .record:active {
     position: relative;
     top: 1px;
+}
+
+span.prediction {
+    width: 49px;
+    display: inline-block;
+    text-align: end;
 }

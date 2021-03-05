@@ -1,7 +1,7 @@
-import {network} from './brain-handler';
-import type Pixel from './pixel';
+import {network} from './modules/brain-handler';
+import type Pixel from './modules/pixel';
 import type brain from 'brain.js';
-import {initPixels} from './EYE';
+import {initPixels} from './modules/EYE';
 
 export const TOTAL_PIXELS = 25;
 export const PIXEL_STEP = Math.sqrt(TOTAL_PIXELS);
@@ -25,8 +25,7 @@ function runBrain() {
   inputArray.length = 0;
   pixels.forEach(pixel => {
     inputArray.push( (pixel.state ? 1 : 0) );
-  })
-
+  });
   const output = network.run(inputArray);
   displayWhatBrainThinks(output);
 }
@@ -34,15 +33,12 @@ function runBrain() {
 function displayWhatBrainThinks(output: brain.NeuralNetworkInput) {
   const result = output as any;
 
-  document.getElementById('result-for-0')!.innerHTML = result['0'].toFixed(4);
-  document.getElementById('result-for-1')!.innerHTML = result['1'].toFixed(4);
-  document.getElementById('result-for-2')!.innerHTML = result['2'].toFixed(4);
-  document.getElementById('result-for-3')!.innerHTML = result['3'].toFixed(4);
-  document.getElementById('result-for-4')!.innerHTML = result['4'].toFixed(4);
-  document.getElementById('result-for-5')!.innerHTML = result['5'].toFixed(4);
-  document.getElementById('result-for-6')!.innerHTML = result['6'].toFixed(4);
-  document.getElementById('result-for-7')!.innerHTML = result['7'].toFixed(4);
-  document.getElementById('result-for-8')!.innerHTML = result['8'].toFixed(4);
-  document.getElementById('result-for-9')!.innerHTML = result['9'].toFixed(4);
-  
+  for(let key in result){
+    const placeHolder = document.getElementById(`result-for-${key}`)!;
+    const prediction = (result[key] * 100).toFixed(2);
+    placeHolder.innerHTML = prediction + "%";
+    
+    const green = Math.round(180 - 180 * result[key]);
+    placeHolder.style.color = `rgb(163,${green},255)`
+  };  
 }
