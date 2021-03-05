@@ -1,27 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8" />
     <link rel="icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="Web site created using create-snowpack-app" />
     <link rel="stylesheet" type="text/css" href="/index.css" />
     <title>Snowpack App</title>
-  </head>
-  <body>
-    <img id="img" src="/logo.svg" />
-    <canvas id="canvas"></canvas>
+</head>
+
+<body>
+    <h1>Brain.js playground</h1>
+    <p>
+        <a href="https://github.com/BrainJS/brain.js" target="_blank">brain.js github</a>
+    </p>
+    <div class="panel">
+        <canvas width="300" height="300" id="eye"></canvas>
+        <div>
+            Brain thinks:
+            <ul>
+                <li>that it is a <span id="result-for-0"></span> chance, that this is 0</li>
+                <li>that it is a <span id="result-for-1"></span> chance, that this is 1</li>
+                <li>that it is a <span id="result-for-2"></span> chance, that this is 2</li>
+                <li>that it is a <span id="result-for-3"></span> chance, that this is 3</li>
+                <li>that it is a <span id="result-for-4"></span> chance, that this is 4</li>
+                <li>that it is a <span id="result-for-5"></span> chance, that this is 5</li>
+                <li>that it is a <span id="result-for-6"></span> chance, that this is 6</li>
+                <li>that it is a <span id="result-for-7"></span> chance, that this is 7</li>
+                <li>that it is a <span id="result-for-8"></span> chance, that this is 8</li>
+                <li>that it is a <span id="result-for-9"></span> chance, that this is 9</li>
+            </ul>
+        </div>
+
+    </div>
+    <div class="control-panel">
+        <input type="button" class="record" value="Compute result..." id="init-process">
+    </div>
+
+    <!-- <input type="button" class="get" value="Get training data" id="get-training-data">
+
+    <input type="radio" name="numbers" id="number-0" val=0><label for="number-0">0</label>
+    <input type="radio" name="numbers" id="number-1" val=1><label for="number-1">1</label>
+    <input type="radio" name="numbers" id="number-2" val=2><label for="number-2">2</label>
+    <input type="radio" name="numbers" id="number-3" val=3><label for="number-3">3</label>
+    <input type="radio" name="numbers" id="number-4" val=4><label for="number-4">4</label>
+    <input type="radio" name="numbers" id="number-5" val=5><label for="number-5">5</label>
+    <input type="radio" name="numbers" id="number-6" val=6><label for="number-6">6</label>
+    <input type="radio" name="numbers" id="number-7" val=7><label for="number-7">7</label>
+    <input type="radio" name="numbers" id="number-8" val=8><label for="number-8">8</label>
+    <input type="radio" name="numbers" id="number-9" val=9><label for="number-9">9</label> -->
+
+    <div id="display-map"></div>
+    <div id="display-output"></div>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <script type="module" src="/dist/index.js"></script>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+</body>
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
-  </body>
 </html>
