@@ -15,44 +15,85 @@
     <p><a href="https://github.com/BrainJS/brain.js" target="_blank">brain.js official github site</a></p>
     <p><a href="https://github.com/DenisTimofijuk/snowpack-brain.js" target="_blank">Source code of this project</a></p>
     <p>The goal is to train with digit recognition only in the middle of the grid and then see how it will be able to predict digit drawn near the side.</p>
-    <div class="panel">
-        <canvas width="300" height="300" id="eye"></canvas>
+    <p>Somehow this was not working, so I trained it with all possible possitions in the grid. I also tryed to show that it is possible not to have any number.</p>
+    <p>But I am not happy with final results. It is not able to recognise digits very well. Also I don't understand hidden layers. In general it looks like the more you have the better it should be. But I can not find proper documentation about them to be
+        able to understand how many neurons corresponding layers should have. Whay it is not possible to have an option that brain.js would create on his own multiple layers and decide on his own how many neurons it needs to have there. From my experementations,
+        I got poor results - the more hidden layers I add, the wors it is able to understand the information.</p>
+    <p>Suddenly I started to expierance another issue. When using pretrained data brain.js digit recognition shifted one step up, that means that when draw 0 it thinks that this is 1, when draw 2 it thinks that this is 3 and so on... Currently I turend off
+        pretrained data sue to this.</p>
+    <div class="brain-panel">
         <div>
-            Brain thinks:
-            <ul>
-                <li>that it is a <span class="prediction" id="result-for-0"></span> chance, that this is 0</li>
-                <li>that it is a <span class="prediction" id="result-for-1"></span> chance, that this is 1</li>
-                <li>that it is a <span class="prediction" id="result-for-2"></span> chance, that this is 2</li>
-                <li>that it is a <span class="prediction" id="result-for-3"></span> chance, that this is 3</li>
-                <li>that it is a <span class="prediction" id="result-for-4"></span> chance, that this is 4</li>
-                <li>that it is a <span class="prediction" id="result-for-5"></span> chance, that this is 5</li>
-                <li>that it is a <span class="prediction" id="result-for-6"></span> chance, that this is 6</li>
-                <li>that it is a <span class="prediction" id="result-for-7"></span> chance, that this is 7</li>
-                <li>that it is a <span class="prediction" id="result-for-8"></span> chance, that this is 8</li>
-                <li>that it is a <span class="prediction" id="result-for-9"></span> chance, that this is 9</li>
-            </ul>
+            <h2>Draw a digit <span id="training-value"></span></h2>
+            <div class="panel">
+                <canvas width="300" height="300" id="eye"></canvas>
+                <div class="output-result">
+                    Brain thinks:
+                    <ul>
+                        <li>that it is a <span class="prediction" id="result-for-0"></span> chance, that this is 0</li>
+                        <li>that it is a <span class="prediction" id="result-for-1"></span> chance, that this is 1</li>
+                        <li>that it is a <span class="prediction" id="result-for-2"></span> chance, that this is 2</li>
+                        <li>that it is a <span class="prediction" id="result-for-3"></span> chance, that this is 3</li>
+                        <li>that it is a <span class="prediction" id="result-for-4"></span> chance, that this is 4</li>
+                        <li>that it is a <span class="prediction" id="result-for-5"></span> chance, that this is 5</li>
+                        <li>that it is a <span class="prediction" id="result-for-6"></span> chance, that this is 6</li>
+                        <li>that it is a <span class="prediction" id="result-for-7"></span> chance, that this is 7</li>
+                        <li>that it is a <span class="prediction" id="result-for-8"></span> chance, that this is 8</li>
+                        <li>that it is a <span class="prediction" id="result-for-9"></span> chance, that this is 9</li>
+                        <li>that it is a <span class="prediction" id="result-for-NaN"></span> chance, that this is NaN</li>
+                    </ul>
+                </div>
+            </div>
         </div>
-
+        <div>
+            <h2>Network map</h2>
+            <div id="display-map"></div>
+        </div>
     </div>
     <div class="control-panel">
         <input type="button" class="record" value="Compute result..." id="init-process">
+        <input type="button" class="record" value="Save training data" id="save">
     </div>
-
-    <!-- <input type="button" class="get" value="Get training data" id="get-training-data">
-
-    <input type="radio" name="numbers" id="number-0" val=0><label for="number-0">0</label>
-    <input type="radio" name="numbers" id="number-1" val=1><label for="number-1">1</label>
-    <input type="radio" name="numbers" id="number-2" val=2><label for="number-2">2</label>
-    <input type="radio" name="numbers" id="number-3" val=3><label for="number-3">3</label>
-    <input type="radio" name="numbers" id="number-4" val=4><label for="number-4">4</label>
-    <input type="radio" name="numbers" id="number-5" val=5><label for="number-5">5</label>
-    <input type="radio" name="numbers" id="number-6" val=6><label for="number-6">6</label>
-    <input type="radio" name="numbers" id="number-7" val=7><label for="number-7">7</label>
-    <input type="radio" name="numbers" id="number-8" val=8><label for="number-8">8</label>
-    <input type="radio" name="numbers" id="number-9" val=9><label for="number-9">9</label> -->
-
-    <div id="display-map"></div>
-    <div id="display-output"></div>
+    <hr>
+    <div class="control-panel-training" id="control-panel-training">
+        <input type="button" class="get-training-data" value="Get training data" id="get-training-data">
+        <span><input type="radio" name="numbers" id="number-0" val=0><label for="number-0">0</label></span>
+        <span><input type="radio" name="numbers" id="number-1" val=1><label for="number-1">1</label></span>
+        <span><input type="radio" name="numbers" id="number-2" val=2><label for="number-2">2</label></span>
+        <span><input type="radio" name="numbers" id="number-3" val=3><label for="number-3">3</label></span>
+        <span><input type="radio" name="numbers" id="number-4" val=4><label for="number-4">4</label></span>
+        <span><input type="radio" name="numbers" id="number-5" val=5><label for="number-5">5</label></span>
+        <span><input type="radio" name="numbers" id="number-6" val=6><label for="number-6">6</label></span>
+        <span><input type="radio" name="numbers" id="number-7" val=7><label for="number-7">7</label></span>
+        <span><input type="radio" name="numbers" id="number-8" val=8><label for="number-8">8</label></span>
+        <span><input type="radio" name="numbers" id="number-9" val=9><label for="number-9">9</label></span>
+        <span><input type="radio" name="numbers" id="number-NaN" val=NaN><label for="number-NaN">NaN</label></span>
+    </div>
+    <div class="training-data-container">
+        <h2>Training data</h2>
+        <p><i><span id="display-training-status"></span></i></p>
+        <input type="button" value="Show training data animation" id="show-training-data">
+    </div>
+    <div class="suspitions-result-container">
+        <h2>Suspitios results</h2>
+        <div class="suspitions-result-holder">
+            <div class="example-container">
+                <img src="./img/issue-1.JPG" alt="Where is 1?">
+                <i>This is included in to training, so why it is unable to recognise it?</i>
+            </div>
+            <div class="example-container">
+                <img src="./img/issue-2.JPG" alt="Why 0?">
+                <i>I did this from 2. It looks like 2 and nothing close to 0, so why it thinks that this is a 0?</i>
+            </div>
+            <div class="example-container">
+                <img src="./img/issue-3.JPG" alt="Why 7?">
+                <i>I did this from 3. Why it thinks that this is a 7?</i>
+            </div>
+            <div class="example-container">
+                <img src="./img/issue-4.JPG" alt="Why 7?">
+                <i>I did this from 9. Why it thinks that this is a 7? What is it about this 7?</i>
+            </div>
+        </div>
+    </div>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <script type="module" src="/dist/index.js"></script>
 </body>

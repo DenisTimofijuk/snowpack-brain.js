@@ -10,4 +10,4 @@ Currently I am a bad trainer, since my brains are not able to recognize digits a
 
 ### Helpers
 
-[webpack5](ttps://www.npmjs.com/package/snowpack-plugin-webpack5)  
+[webpack5](https://www.npmjs.com/package/snowpack-plugin-webpack5)  
