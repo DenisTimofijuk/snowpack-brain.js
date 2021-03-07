@@ -1,4 +1,4 @@
-import trainingData from '../JSON/training/data.v1.json';
+import trainingData from '../JSON/training/data.v0.json';
 import type Pixel from '../modules/pixel';
 
 const DOWNLOAD_IMAGES = false;

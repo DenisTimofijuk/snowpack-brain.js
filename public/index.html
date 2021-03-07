@@ -15,12 +15,11 @@
     <p><a href="https://github.com/BrainJS/brain.js" target="_blank">brain.js official github site</a></p>
     <p><a href="https://github.com/DenisTimofijuk/snowpack-brain.js" target="_blank">Source code of this project</a></p>
     <p>The goal is to train with digit recognition only in the middle of the grid and then see how it will be able to predict digit drawn near the side.</p>
-    <p>Somehow this was not working, so I trained it with all possible possitions in the grid. I also tryed to show that it is possible not to have any number.</p>
-    <p>But I am not happy with final results. It is not able to recognise digits very well. Also I don't understand hidden layers. In general it looks like the more you have the better it should be. But I can not find proper documentation about them to be
-        able to understand how many neurons corresponding layers should have. Whay it is not possible to have an option that brain.js would create on his own multiple layers and decide on his own how many neurons it needs to have there. From my experementations,
-        I got poor results - the more hidden layers I add, the wors it is able to understand the information.</p>
+    <p>But I am not happy with final results. It is not able to recognise digits very well especialy when I trained it with all possible plaices where digit can be in the grid. Also I don't understand hidden layers. In general it looks like the more you
+        have the better it should be. But I can not find proper documentation about them to be able to understand how many neurons corresponding layers should have. Whay it is not possible to have an option that brain.js would create on his own multiple
+        layers and decide on his own how many neurons it needs to have there. From my experementations, I got poor results - the more hidden layers I add, the wors it is able to understand the information.</p>
     <p>Suddenly I started to expierance another issue. When using pretrained data brain.js digit recognition shifted one step up, that means that when draw 0 it thinks that this is 1, when draw 2 it thinks that this is 3 and so on... Currently I turend off
-        pretrained data sue to this.</p>
+        pretrained data usage.</p>
     <div class="brain-panel">
         <div>
             <h2>Draw a digit <span id="training-value"></span></h2>
@@ -50,7 +49,7 @@
         </div>
     </div>
     <div class="control-panel">
-        <input type="button" class="record" value="Compute result..." id="init-process">
+        <input type="button" class="record" value="Compute result..." id="init-process"><span id="training-callbak-output"></span>
         <input type="button" class="record" value="Save training data" id="save">
     </div>
     <hr>
@@ -75,22 +74,19 @@
     </div>
     <div class="suspitions-result-container">
         <h2>Suspitios results</h2>
+        <p>You can play and find more various scenarious when brain.js thinks about particualr number when in reality it should not.</p>
         <div class="suspitions-result-holder">
             <div class="example-container">
-                <img src="./img/issue-1.JPG" alt="Where is 1?">
-                <i>This is included in to training, so why it is unable to recognise it?</i>
+                <img src="./img/issue-1.JPG" alt="Issue">
+                <i>It is strange that it tries to get a digit when it is trained to learn that it is possible not to have one.</i>
             </div>
             <div class="example-container">
-                <img src="./img/issue-2.JPG" alt="Why 0?">
-                <i>I did this from 2. It looks like 2 and nothing close to 0, so why it thinks that this is a 0?</i>
+                <img src="./img/issue-2.JPG" alt="Issue">
+                <i>Very low propability.</i>
             </div>
             <div class="example-container">
-                <img src="./img/issue-3.JPG" alt="Why 7?">
-                <i>I did this from 3. Why it thinks that this is a 7?</i>
-            </div>
-            <div class="example-container">
-                <img src="./img/issue-4.JPG" alt="Why 7?">
-                <i>I did this from 9. Why it thinks that this is a 7? What is it about this 7?</i>
+                <img src="./img/issue-3.JPG" alt="Issue">
+                <i>Very strong feelings fro 7.</i>
             </div>
         </div>
     </div>
